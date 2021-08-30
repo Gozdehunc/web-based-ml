@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <title>Evinizi Değerleyin</title>
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static' , filename='main.css') }}" />
+    
+</head>
+
+<body style="background-color: black;">
+    {%if df1 %} 
+    <div class="card" style="width: 40%;height: 40%; margin: 0px auto;background-color:silver;">
+        <div class="card-body" style="float: left;"  >
+            <h1 style="color: lightslategray;text-align: center;font-family: 'Playfair Display', serif;">The predicted price of your desired house is:</h1>
+            <h2 style="color: black;text-align: center;">{{"%.4f"|format(df1[0])}}</h2>
+            
+            
+        </div>
+    </div>
+        
+    {%else%}
+    <div class="card" style="width: 40%;height: 40%; margin: 0px auto;background-color:silver;">
+        <div class="card-body" style="float: left;"  >
+            <h1 style="color: blanchedalmond;text-align: center;font-family: 'Playfair Display', serif;">Value my Home</h1>
+    
+        <form method="POST" style="margin-top: 20px; margin-left: 20px;margin: 0px auto;height: 50%;">
+            
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;"><b>Bedrooms:</b></label>
+            <select name="bedrooms" class="form-control" id="exampleFormControlSelect1" style="font-size: 20px;background-color: blanchedalmond;">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;"><b>Bathrooms:</b></label>
+            <select name="bathrooms" class="form-control" id="exampleFormControlSelect1" style="font-size: 20px;background-color: blanchedalmond;" >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlInput1" style="font-size: 25px;"><b>Living Area (Square Feet):</b></label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" name="area_living" style="background-color: blanchedalmond;"><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlInput1" style="font-size: 25px;"><b>Lot Area (Square Feet):</b></label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" name="area_lot" style="background-color: blanchedalmond;"><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;" ><b>Floors:</b></label>
+            <select name="floors" class="form-control" id="exampleFormControlSelect1" style="font-size: 20px;background-color: blanchedalmond;">
+                <option value="1">1</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2</option>
+                <option value="2.5">2.5</option>
+                <option value="3">3</option>
+                <option value="3">3.5</option>
+            </select><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;" ><b>Waterfront:</b></label>
+            <select name="waterfront" class="form-control" id="exampleFormControlSelect1" style="font-size: 20px;background-color: blanchedalmond;">
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;" ><b>View:</b></label>
+            <select name="view" class="form-control" id="exampleFormControlSelect1" style="font-size: 20px;background-color: blanchedalmond;">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;"><b>Condition:</b></label>
+            <select name="condition" class="form-control" id="exampleFormControlSelect1" style="font-size: 20px;background-color: blanchedalmond;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            </div>
+            
+            <div class="form-group">
+            <label for="exampleFormControlInput1" style="font-size: 25px;"><b>Above Area (Square Feet):</b></label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" name="area_above" style="background-color: blanchedalmond;"><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlInput1" style="font-size: 25px;"><b>Basement Area (Square Feet):</b></label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" name="area_basement" style="background-color: blanchedalmond;"><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlInput1" style="font-size: 25px;" ><b>Year of Built:</b></label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" name="built" style="background-color: blanchedalmond;"><br>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" style="font-size: 25px;" ><b>Year of Renovated:</b></label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" name="renovated" style="background-color: blanchedalmond;"><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;"><b>City:</b></label>
+            <select name="city" class="form-control" id="exampleFormControlSelect1" style="background-color: blanchedalmond;">
+                <option value="Seattle">Seattle</option>
+                <option value="Renton">Renton</option>
+                <option value="Bellevue">Bellevue</option>
+                <option value="Redmond">Redmond</option>
+                <option value="Kirkland">Kirkland</option>
+                <option value="Issaquah">Issaquah</option>
+                <option value="Kent">Kent</option>
+                <option value="Auburn">Auburn</option>
+                <option value="Sammamish">Sammamish</option>
+                <option value="Federal Way">Federal Way</option>
+                <option value="Shoreline">Shoreline</option>
+                <option value="Woodinville">Woodinville</option>
+                <option value="Maple Valley">Maple Valley</option>
+                <option value="Mercer Island">Mercer Island</option>
+                <option value="Burien">Burien</option>
+                <option value="Snoqualmie">Snoqualmie</option>
+                <option value="Kenmore">Kenmore</option>
+                <option value="Des Moines">Des Moines</option>
+                <option value="North Bend">North Bend</option>
+                <option value="Covington">Covington</option>
+                <option value="Duvall">Duvall</option>
+                <option value="Lake Forest Park">Lake Forest Park</option>
+                <option value="Newcastle">Newcastle</option>
+                <option value="Bothell">Bothell</option>
+                <option value="Vashon">Vashon</option>
+                <option value="Tukwila">Tukwila</option>
+                <option value="SeaTac">SeaTac</option>
+                <option value="Enumclaw">Enumclaw</option>
+                <option value="Carnation">Carnation</option>
+                <option value="Normandy Park">Normandy Park</option>
+                <option value="Clyde Hill">Clyde Hill</option>
+                <option value="Medina">Medina</option>
+                <option value="Fall City">Fall City</option>
+                <option value="Black Diamond">Black Diamond</option>
+                <option value="Ravensdale">Ravensdale</option>
+                <option value="Pacific">Pacific</option>
+                <option value="Algona">Algona</option>
+                <option value="Yarrow Point">Yarrow Point</option>
+                <option value="Skykomish">Skykomish</option>
+                <option value="Preston">Preston</option>
+                <option value="Milton">Milton</option>
+                <option value="Beaux Arts Village">Beaux Arts Village</option>
+                <option value="Inglewood-Finn Hill">Inglewood-Finn Hill</option>
+                <option value="Snoqualmie Pass">Snoqualmie Pass</option>
+            </select><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlInput1" style="font-size: 25px;"><b>Statezip:</b></label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="zip" placeholder="Enter a full zipcode e.g. WA 98045" style="background-color: blanchedalmond;"><br>
+            </div>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-size: 25px;"><b>Country:</b></label>
+            <select name="country" class="form-control" id="exampleFormControlSelect1" style="background-color: blanchedalmond;">
+                <option value="USA">USA</option>
+            </select><br>
+            </div>
+            
+            <input type="submit" name="submit" class="btn" style="background-color: blanchedalmond;" value="submitted" >
+            <input type="submit" name="cancel" class="btn" style="background-color: blanchedalmond;" value="return">
+        </form>
+    </div>
+</div>
+    {%endif%}
+</body>
+</html>
